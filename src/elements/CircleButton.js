@@ -1,6 +1,7 @@
 import React from "react"
 
 import { StyleSheet, Text, View } from "react-native"
+import { getBackgroundColor } from "react-native/Libraries/LogBox/UI/LogBoxStyle"
 
 const styles = StyleSheet.create({
   circleButton: {
@@ -9,7 +10,6 @@ const styles = StyleSheet.create({
     right: 32,
     width: 48,
     height: 48,
-    backgroundColor: "#e31676",
     borderRadius: 24,
     alignItems: "center",
     justifyContent: "center",
@@ -25,10 +25,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const CircleButton = ({ children }) => {
+const CircleButton = ({ children, style, color }) => {
+  let bgColor = "#e31676"
+  let textColor = "#fff"
+
+  if (color === "white") {
+    bgColor = "#fff"
+    textColor = "#e31676"
+  }
   return (
-    <View style={styles.circleButton}>
-      <Text style={styles.circleButtonTitle}>{children}</Text>
+    <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
+      <Text style={[styles.circleButtonTitle, { color: textColor }]}>{children}</Text>
     </View>
   )
 }

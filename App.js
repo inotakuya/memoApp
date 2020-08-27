@@ -2,6 +2,7 @@ import React from "react"
 import { StyleSheet, View } from "react-native"
 import MemoListScreen from "./src/screens/MemoListScreen"
 import Appbar from "./src/components/Appbar"
+import MemoDetailScreen from "./src/screens/MemoDetailScreen"
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Appbar />
-      <MemoListScreen />
+      {/*<MemoListScreen />*/}
+      <MemoDetailScreen />
     </View>
   )
 }
