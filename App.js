@@ -1,8 +1,7 @@
 import React from "react"
 import { StyleSheet, View } from "react-native"
-import MemoList from "./src/components/MemoList"
+import MemoListScreen from "./src/screens/MemoListScreen"
 import Appbar from "./src/components/Appbar"
-import CircleButton from "./src/elements/CircleButton"
 
 const styles = StyleSheet.create({
   container: {
@@ -18,10 +17,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Appbar />
-
-      <MemoList />
-
-      <CircleButton>+</CircleButton>
+      <MemoListScreen />
     </View>
   )
 }
