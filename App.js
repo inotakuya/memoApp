@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native"
 import MemoListScreen from "./src/screens/MemoListScreen"
 import Appbar from "./src/components/Appbar"
 import MemoDetailScreen from "./src/screens/MemoDetailScreen"
+import MemoEditScreen from "./src/screens/MemoEditScreen";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +20,8 @@ export default function App() {
     <View style={styles.container}>
       <Appbar />
       {/*<MemoListScreen />*/}
-      <MemoDetailScreen />
+      {/*<MemoDetailScreen />*/}
+      <MemoEditScreen />
     </View>
   )
 }
