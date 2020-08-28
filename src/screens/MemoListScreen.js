@@ -10,7 +10,7 @@ const MemoListScreen = () => {
     <>
       <MemoList />
 
-      <CircleButton>+</CircleButton>
+      <CircleButton name="plus" />
     </>
   )
 }

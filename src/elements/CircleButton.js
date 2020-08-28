@@ -1,7 +1,17 @@
+import { createIconSet } from "@expo/vector-icons"
+import { AppLoading } from "expo"
+import { useFonts } from "expo-font"
 import React from "react"
+import { StyleSheet, View } from "react-native"
+import fontAwsome from "../../assets/fonts/fa-solid-900.ttf"
 
-import { StyleSheet, Text, View } from "react-native"
-import { getBackgroundColor } from "react-native/Libraries/LogBox/UI/LogBoxStyle"
+const CustomIcon = createIconSet(
+  {
+    pencil: "\uf303",
+    plus: "\uf067",
+  },
+  "FontAwsome"
+)
 
 const styles = StyleSheet.create({
   circleButton: {
@@ -19,13 +29,13 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   circleButtonTitle: {
-    fontSize: 32,
+    fontSize: 24,
     lineHeight: 32,
-    color: "#fff",
+    fontFamily: "FontAwsome",
   },
 })
 
-const CircleButton = ({ children, style, color }) => {
+const CircleButton = ({ name, style, color }) => {
   let bgColor = "#e31676"
   let textColor = "#fff"
 
@@ -33,9 +43,18 @@ const CircleButton = ({ children, style, color }) => {
     bgColor = "#fff"
     textColor = "#e31676"
   }
+
+  const [fontsLoaded] = useFonts({
+    FontAwsome: fontAwsome,
+  })
+
   return (
     <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
-      <Text style={[styles.circleButtonTitle, { color: textColor }]}>{children}</Text>
+      {fontsLoaded ? (
+        <CustomIcon name={name} style={[styles.circleButtonTitle, { color: textColor }]} />
+      ) : (
+        <AppLoading />
+      )}
     </View>
   )
 }
