@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const MemoDetailScreen = () => {
+const MemoDetailScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View>
@@ -53,7 +53,12 @@ const MemoDetailScreen = () => {
         <Text>講座のアイデアです</Text>
       </View>
 
-      <CircleButton name="pencil" color="white" style={styles.editButton} />
+      <CircleButton
+        name="pencil"
+        color="white"
+        style={styles.editButton}
+        onPress={() => navigation.navigate("MemoEdit")}
+      />
     </View>
   )
 }

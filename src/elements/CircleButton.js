@@ -2,7 +2,7 @@ import { createIconSet } from "@expo/vector-icons"
 import { AppLoading } from "expo"
 import { useFonts } from "expo-font"
 import React from "react"
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, TouchableHighlight, View } from "react-native"
 import fontAwsome from "../../assets/fonts/fa-solid-900.ttf"
 
 const CustomIcon = createIconSet(
@@ -15,10 +15,14 @@ const CustomIcon = createIconSet(
 )
 
 const styles = StyleSheet.create({
-  circleButton: {
+  container: {
+    width: 48,
+    height: 48,
     position: "absolute",
-    bottom: 32,
-    right: 32,
+    bottom: 24,
+    right: 24,
+  },
+  circleButton: {
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const CircleButton = ({ name, style, color }) => {
+const CircleButton = ({ name, style, color, onPress }) => {
   let bgColor = "#e31676"
   let textColor = "#fff"
 
@@ -50,13 +54,15 @@ const CircleButton = ({ name, style, color }) => {
   })
 
   return (
-    <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
-      {fontsLoaded ? (
-        <CustomIcon name={name} style={[styles.circleButtonTitle, { color: textColor }]} />
-      ) : (
-        <AppLoading />
-      )}
-    </View>
+    <TouchableHighlight style={[styles.container, style]} onPress={onPress} underlayColor="transparent">
+      <View style={[styles.circleButton, { backgroundColor: bgColor }]}>
+        {fontsLoaded ? (
+          <CustomIcon name={name} style={[styles.circleButtonTitle, { color: textColor }]} />
+        ) : (
+          <AppLoading />
+        )}
+      </View>
+    </TouchableHighlight>
   )
 }
 
