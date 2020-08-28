@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import { StyleSheet, Text, TextInput, TouchableHighlight, View } from "react-native"
 
@@ -38,12 +38,37 @@ const styles = StyleSheet.create({
 })
 
 const LoginScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleSubmit = () => {
+
+    // ログイン処理
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>ログイン</Text>
-      <TextInput style={styles.input} value="Email Address" />
-      <TextInput style={styles.input} value="Password" />
-      <TouchableHighlight style={styles.button} onPress={() => navigation.navigate("Home")}>
+      <TextInput
+        style={styles.input}
+        value={email}
+        onChangeText={text => {
+          setEmail(text)
+        }}
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Email Address"
+      />
+      <TextInput
+        style={styles.input}
+        value={password}
+        onChangeText={text => setPassword(text)}
+        autoCapitalize="none"
+        autoCorrect={false}
+        placeholder="Password"
+        secureTextEntry
+      />
+      <TouchableHighlight style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonTitle}>ログインする</Text>
       </TouchableHighlight>
     </View>
