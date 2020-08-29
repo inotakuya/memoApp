@@ -1,4 +1,5 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
+import "firebase/auth"
 import React, { useState } from "react"
 
 import { StyleSheet, Text, TextInput, TouchableHighlight, View } from "react-native"
@@ -49,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         console.log("Success!", user)
-        navigation.navigate("Home")
+        navigation.navigate("Home", { currentUser: user })
       })
       .catch(user => {
         console.log("error!", user)

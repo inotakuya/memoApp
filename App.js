@@ -1,7 +1,8 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
 import { createAppContainer } from "react-navigation"
 import { createStackNavigator } from "react-navigation-stack"
 import LoginScreen from "./src/screens/LoginScreen"
+import MemoCreateScreen from "./src/screens/MemoCreateScreen"
 import MemoDetailScreen from "./src/screens/MemoDetailScreen"
 import MemoEditScreen from "./src/screens/MemoEditScreen"
 import MemoListScreen from "./src/screens/MemoListScreen"
@@ -36,6 +37,9 @@ const App = createStackNavigator(
     },
     MemoEdit: {
       screen: MemoEditScreen,
+    },
+    MemoCreate: {
+      screen: MemoCreateScreen,
     },
   },
   {
