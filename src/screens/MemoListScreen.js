@@ -26,7 +26,7 @@ const MemoListScreen = ({ navigation }) => {
       .then(snapshot => {
         const tmpMemoList = []
         snapshot.forEach(doc => {
-          tmpMemoList.push(doc.data())
+          tmpMemoList.push({ ...doc.data(), key: doc.id })
         })
         setMemoList(tmpMemoList)
       })
