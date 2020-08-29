@@ -1,3 +1,4 @@
+import firebase from "firebase"
 import React, { useState } from "react"
 
 import { StyleSheet, Text, TextInput, TouchableHighlight, View } from "react-native"
@@ -42,8 +43,17 @@ const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("")
 
   const handleSubmit = () => {
-
     // ログイン処理
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        console.log("Success!", user)
+        navigation.navigate("Home")
+      })
+      .catch(user => {
+        console.log("error!", user)
+      })
   }
 
   return (

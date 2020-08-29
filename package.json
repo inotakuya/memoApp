@@ -10,11 +10,12 @@
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
     "@react-native-community/masked-view": "0.1.10",
+    "@types/firebase": "^3.2.1",
     "@types/react-native": "^0.63.10",
     "expo": "~38.0.8",
     "expo-font": "^8.2.2",
     "expo-status-bar": "^1.0.2",
-    "firebase": "^7.19.1",
+    "firebase": "7.9.0",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
     "react-native": "^0.62.2",
