@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const MemoList = ({ navigation }) => {
+const MemoList = ({ navigation, memoList }) => {
+  console.log("memoList", memoList)
   return (
     <View style={styles.memoList}>
       <TouchableHighlight onPress={() => navigation.navigate("MemoDetail")}>
