@@ -1,5 +1,6 @@
 import firebase from "firebase/app"
 import "firebase/firestore"
+import "firebase/auth"
 import React, { useState } from "react"
 
 import { StyleSheet, TextInput, View } from "react-native"
@@ -24,9 +25,10 @@ const styles = StyleSheet.create({
 const MemoCreateScreen = ({ navigation }) => {
   const [body, setBody] = useState("")
   const handlePress = () => {
-    const { params } = navigation.state
     const db = firebase.firestore()
-    db.collection(`users/${params.currentUser.user.uid}/memos`)
+    const { currentUser } = firebase.auth()
+    console.log("current", currentUser)
+    db.collection(`users/${currentUser.uid}/memos`)
       .add({
         body,
         createdOn: new Date(),

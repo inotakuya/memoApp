@@ -50,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         console.log("Success!", user)
-        navigation.navigate("Home", { currentUser: user })
+        navigation.navigate("Home")
       })
       .catch(user => {
         console.log("error!", user)

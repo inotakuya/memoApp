@@ -13,8 +13,7 @@ const styles = StyleSheet.create({
 
 const MemoListScreen = ({ navigation }) => {
   const handlePress = () => {
-    const { params } = navigation.state
-    navigation.navigate("MemoCreate", { currentUser: params.currentUser })
+    navigation.navigate("MemoCreate")
   }
   return (
     <View style={styles.container}>
