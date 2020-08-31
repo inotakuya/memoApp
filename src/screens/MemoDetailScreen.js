@@ -46,11 +46,15 @@ const MemoDetailScreen = ({ navigation }) => {
   useEffect(() => {
     const { params } = navigation.state
     setMemo(params.memo)
-  }, [memo])
+  }, [])
 
   const dateString = date => {
     const str = date.toDate().toISOString()
     return str.split("T")[0]
+  }
+
+  const returnMemo = memo => {
+    setMemo(memo)
   }
 
   return (
@@ -74,7 +78,7 @@ const MemoDetailScreen = ({ navigation }) => {
         name="pencil"
         color="white"
         style={styles.editButton}
-        onPress={() => navigation.navigate("MemoEdit", { memo })}
+        onPress={() => navigation.navigate("MemoEdit", { ...memo, returnMemo })}
       />
     </View>
   )

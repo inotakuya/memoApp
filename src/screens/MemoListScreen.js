@@ -21,18 +21,16 @@ const MemoListScreen = ({ navigation }) => {
   useEffect(() => {
     const { currentUser } = firebase.auth()
     const db = firebase.firestore()
-    db.collection(`users/${currentUser.uid}/memos`)
-      .get()
-      .then(snapshot => {
-        const tmpMemoList = []
-        snapshot.forEach(doc => {
-          tmpMemoList.push({ ...doc.data(), key: doc.id })
-        })
-        setMemoList(tmpMemoList)
+    db.collection(`users/${currentUser.uid}/memos`).onSnapshot(snapshot => {
+      const tmpMemoList = []
+      snapshot.forEach(doc => {
+        tmpMemoList.push({ ...doc.data(), key: doc.id })
       })
-      .catch(error => {
-        console.log(error)
-      })
+      setMemoList(tmpMemoList)
+    })
+    // .catch(error => {
+    //   console.log(error)
+    // })
   }, [])
   return (
     <View style={styles.container}>

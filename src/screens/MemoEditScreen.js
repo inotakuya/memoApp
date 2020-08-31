@@ -23,17 +23,26 @@ const styles = StyleSheet.create({
 })
 
 const MemoEditScreen = ({ navigation }) => {
-  const [memo, setMemo] = useState({})
+  const initialState = {
+    body: "",
+    createdOn: null,
+    key: "",
+  }
+  const [memo, setMemo] = useState(initialState)
   const handlePress = () => {
     const db = firebase.firestore()
     const { currentUser } = firebase.auth()
+    const newDate = firebase.firestore.Timestamp.now()
     db.collection(`users/${currentUser.uid}/memos`)
       .doc(memo.key)
       .update({
         body: memo.body,
+        createdOn: newDate,
       })
       .then(() => {
         console.log("Success!")
+        navigation.state.params.returnMemo({ ...memo, createdOn: newDate })
+        navigation.goBack()
       })
       .catch(error => {
         console.log(error)
@@ -41,7 +50,7 @@ const MemoEditScreen = ({ navigation }) => {
   }
   useEffect(() => {
     const { params } = navigation.state
-    setMemo(params.memo)
+    setMemo(params)
   }, [])
   return (
     <View style={styles.container}>
