@@ -35,6 +35,7 @@ const MemoCreateScreen = ({ navigation }) => {
       })
       .then(docRef => {
         console.log(docRef.id)
+        navigation.goBack()
       })
       .catch(error => {
         console.log(error)
