@@ -74,7 +74,7 @@ const MemoDetailScreen = ({ navigation }) => {
         name="pencil"
         color="white"
         style={styles.editButton}
-        onPress={() => navigation.navigate("MemoEdit")}
+        onPress={() => navigation.navigate("MemoEdit", { memo })}
       />
     </View>
   )
