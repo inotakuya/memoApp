@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import { StyleSheet, Text, View } from "react-native"
 import CircleButton from "../elements/CircleButton"
@@ -35,22 +35,39 @@ const styles = StyleSheet.create({
   editButton: {
     top: 75,
   },
+  memoBody: {
+    lineHeight: 20,
+    fontSize: 15,
+  },
 })
 
 const MemoDetailScreen = ({ navigation }) => {
+  const [memo, setMemo] = useState("")
+  useEffect(() => {
+    const { params } = navigation.state
+    setMemo(params.memo)
+  }, [memo])
+
+  const dateString = date => {
+    const str = date.toDate().toISOString()
+    return str.split("T")[0]
+  }
+
   return (
     <View style={styles.container}>
       <View>
         <View style={styles.memoHeader}>
           <View>
-            <Text style={styles.memoHeaderTitle}>講座のアイデア</Text>
-            <Text style={styles.memoHeaderDate}>2017/12/12</Text>
+            <Text style={styles.memoHeaderTitle}>{memo.body && memo.body.substring(0, 10)}</Text>
+            <Text style={styles.memoHeaderDate}>
+              {memo.createdOn && dateString(memo.createdOn)}
+            </Text>
           </View>
         </View>
       </View>
 
       <View style={styles.memoContent}>
-        <Text>講座のアイデアです</Text>
+        <Text style={styles.memoBody}>{memo.body}</Text>
       </View>
 
       <CircleButton

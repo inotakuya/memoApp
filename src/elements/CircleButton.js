@@ -54,7 +54,11 @@ const CircleButton = ({ name, style, color, onPress }) => {
   })
 
   return (
-    <TouchableHighlight style={[styles.container, style]} onPress={onPress} underlayColor="transparent">
+    <TouchableHighlight
+      style={[styles.container, style]}
+      onPress={onPress}
+      underlayColor="transparent"
+    >
       <View style={[styles.circleButton, { backgroundColor: bgColor }]}>
         {fontsLoaded ? (
           <CustomIcon name={name} style={[styles.circleButtonTitle, { color: textColor }]} />
